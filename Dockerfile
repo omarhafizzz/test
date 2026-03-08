@@ -3,7 +3,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Install dependencies
-RUN pip install --no-cache-dir flask requests
+RUN pip install --default-timeout=1000 --no-cache-dir flask requests
 
 # Create Flask app structure
 RUN mkdir -p templates
