@@ -1,8 +1,8 @@
-# 1. هنجيب النسخة الرسمية بتاعت أباتشي سيرفر
+# 1. هنجيب النسخة الرسمية من سيرفر أباتشي
 FROM httpd:latest
 
-# 2. هناخد ملف الموقع بتاعنا (هنعمله في الخطوة الجاية) 
-# ونحطه جوه المسار الافتراضي اللي أباتشي بيقرا منه صفحات الويب
-COPY ./index.html /usr/local/apache2/htdocs/
+# 2. هنمسح الصفحة الافتراضية بتاعت أباتشي
+RUN rm /usr/local/apache2/htdocs/index.html
 
-# (مفيش داعي نكتب أمر تشغيل، لأن صورة httpd بتشتغل لوحدها بمجرد ما تعملها Run)
+# 3. هنعمل صفحة جديدة خاصة بيك عشان لما تفتح المتصفح تتأكد إن شغلك نجح
+RUN echo "<h1 style='text-align: center; margin-top: 50px;'>Hello from Jenkins! Build is Successful 🚀</h1>" > /usr/local/apache2/htdocs/index.html
